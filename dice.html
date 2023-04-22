@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>DiceGame</title>
+	<script type="text/javascript">
+		//player Names
+		var player1="player 1";
+		var player2="player 2";
+		//function to change the player name
+		function editName(){
+			player1=prompt("Change Player 1 name");
+			player2=prompt("Change player 2 name")
+			document.querySelector("p.Player1").innerHTML=player1;
+			document.querySelector("p.Player2").innerHTML=player2;
+		}
+		//function to roll the dice
+		function rollTheDice(){
+			setTimeout(function(){
+				var randomNumber1=Math.floor(Math.random()*6)
+				var randomNumber2=Math.floor(Math.random()*6)
+				document.querySelector(".img1").setAttribute("src" ,"images/dice"+randomNumber1+".png");
+				document.querySelector(".img2").setAttribute("src" ,"images/dice"+randomNumber2 +".png");
+				if(randomNumber1=== randomNumber2){
+					document.querySelector("h1").innerHTML="Draw!";
+				}
+				else if (randomNumber1 < randomNumber2){
+					document.querySelector("h1").innerHTML=(player2+"WINS!");
+				}
+				else{
+					document.querySelector("h1").innerHTML=(player1+"WINS!");
+				}
+
+				
+			},1000)
+		}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h1>Let's Play</h1>
+		<div class="dice">
+			<p class="Player1">Player 1</p>
+			<img class="img1" src="images/dice.png">
+		</div>
+		<div class="dice">
+			<p class="Player2">Player 2</p>
+			<img class="img2" src="images/dice.png">
+		</div>
+	</div>
+	<div class="containerbottom">
+		<button type="button" class="butn" onClick="rollTheDice()">Roll The Dice Player1</button>
+	</div>
+	<div class="containerbottom">
+		<button type="button" class="butn" onClick="editName()">Edit Names</button>
+	</div>	
+
+</body>
+</html>
